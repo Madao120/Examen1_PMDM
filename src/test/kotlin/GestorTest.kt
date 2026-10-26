@@ -23,6 +23,7 @@ class  GestorTest {
         // Pongo MovingUp ya que quiero comprobar que haya pasado sin cambiar el nivel
         assertEquals(Estados.MovingUP(0), estado_acual)
     }
+
     @Test
     fun testMovingUP() {
         estado_acual = Estados.Idle(0)
@@ -39,6 +40,7 @@ class  GestorTest {
         assertEquals(2, resultado)
         assertEquals(Estados.Idle(1), estado_acual)
     }
+
     @Test
     fun testMovingDown() {
         estado_acual = Estados.Idle(1)
@@ -54,8 +56,9 @@ class  GestorTest {
         assertEquals(2, resultado)
         assertEquals(Estados.Idle(0), estado_acual)
     }
+
     @Test
-    fun tstError() {
+    fun tstErrorMovingUp() {
         @Test
         fun tstError() {
             estado_acual = Estados.Idle(1)
@@ -70,5 +73,25 @@ class  GestorTest {
             println(gestor(Botonera.NIVEL_1))
 
             assertEquals(Estados.Idle(-1), estado_acual)
-        }    }
+        }
+    }
+
+    @Test
+    fun tstErrorMovingDown() {
+        @Test
+        fun tstError() {
+            estado_acual = Estados.Idle(0)
+
+            // Idle -> MovingUP
+            gestor(Botonera.NIVEL_0)
+
+            // MovingUP -> Error
+            println(gestor(Botonera.NIVEL_0))
+
+            // Error -> Idle
+            println(gestor(Botonera.NIVEL_0))
+
+            assertEquals(Estados.Idle(-1), estado_acual)
+        }
+    }
 }
