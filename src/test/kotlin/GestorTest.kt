@@ -1,5 +1,8 @@
-package org.danielcastelao.dam
+package org.example
 
+import org.example.Ascensor.nivel_actual
+import org.example.Ascensor.estado_acual
+import org.example.Ascensor.gestor
 import kotlin.test.AfterTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
